@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pantry</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+</head>
+
+<body>
+
+    <div class="header-title">
+        <h1>Pantry</h1>
+    </div>
+
+    <div class="search-bar">
+        <form method="get">
+            <fieldset>
+                <legend>Recipe Search</legend>
+                <label>Enter a search query:
+                    <input type="text" name="recipe-query" id="recipe-query">
+                </label>
+                <br>
+                <label for="recipe-cuisine">Choose a cuisine:</label>
+                <select id="recipe-cuisine" name="recipe-cuisine">
+                    <option value="african">African</option>
+                    <option value="american">American</option>
+                    <option value="british">British</option>
+                    <option value="cajun">Cajun</option>
+                    <option value="caribbean">Caribbean</option>
+                    <option value="chinese">Chinese</option>
+                    <option value="easternEuropean">Eastern European</option>
+                    <option value="european">European</option>
+                    <option value="german">German</option>
+                    <option value="greek">Greek</option>
+                    <option value="indian">Indian</option>
+                    <option value="irish">Irish</option>
+                    <option value="italian">Italian</option>
+                    <option value="japanese">Japanese</option>
+                    <option value="jewish">Jewish</option>
+                    <option value="korean">Korean</option>
+                    <option value="latinAmerican">Latin American</option>
+                    <option value="mediterranean">Mediterranean</option>
+                    <option value="mexican">Mexican</option>
+                    <option value="middleEastern">Middle Eastern</option>
+                    <option value="nordic">Nordic</option>
+                    <option value="southern">Southern</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="thai">Thai</option>
+                    <option value="vietnamese">Vietnamese</option>
+                </select>
+                <br>
+                <label for="recipe-diet">Choose a diet:</label>
+                <select id="recipe-diet" name="recipe-diet">
+                    <option value="None">None</option>
+                    <option value="glutenFree">Gluten Free</option>
+                    <option value="ketogenic">Ketogenic</option>
+                    <option value="lacto-vegetarian">Lacto-Vegetarian</option>
+                    <option value="ovo-vegetarian">Ovo-Vegetarian</option>
+                    <option value="paleo">Paleo</option>
+                    <option value="pescetarian">Pescetarian</option>
+                    <option value="primal">Primal</option>
+                    <option value="vegan">Vegan</option>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="whole30">Whole30</option>
+                </select>
+                <br>
+                <label for="recipe-number">Select the number of results:</label>
+                <input type="number" id="recipe-number" name="recipe-number" min="1" max="10" value="1">
+                <br>
+                <input type="submit" id="recipe-submit">
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="instructions">
+        <h6>Enter your recipe preferences.</h6>
+    </div>
+
+    <div id="recipe-result">    
+    </div>
+    
+    <div id="footer"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
