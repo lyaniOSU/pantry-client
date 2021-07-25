@@ -16,6 +16,7 @@ document.getElementById('recipe-submit').addEventListener('click', function (eve
       var res = response;
       console.log(res);
       createRecipe(res);
+      linkListen(res);
       //document.getElementById('recipe-result').textContent = response.results[0].title;
     } else {
       document.getElementById('recipe-result').textContent = "Error";
@@ -132,6 +133,7 @@ function createRecipe(response) {
     link.innerHTML = title;
     link.href = "../public/details.html"
     link.setAttribute("id", id);
+    link.setAttribute("name", count);
 
     //var image = "https://spoonacular.com/recipeImages/" + response[count].image;
     var image = response[count].image;
@@ -152,7 +154,8 @@ function linkListen(response) {
   links.forEach((link) => {
     link.addEventListener('click', function(event) {
       let id = this.id;
-      var req = new XMLHttpRequest();
+      let name = this.name;
+      //var req = new XMLHttpRequest();
       //req.open('GET', "http://127.0.0.1:5000/details?id=" + id, true);
       /*req.addEventListener('load', function() {
         if (req.status >= 200 && req.status < 400) {
@@ -171,7 +174,7 @@ function linkListen(response) {
       });*/
       //req.send(null);
       //event.preventDefault();
-      req.open('GET', "http://127.0.0.1:5000/details?id=" + id, true);
+      /*req.open('GET', "http://127.0.0.1:5000/details?id=" + id, true);
       req.addEventListener('load', function() {
         event.preventDefault();
         if (req.status >= 200 && req.status < 400) {
@@ -185,7 +188,10 @@ function linkListen(response) {
           window.location = '../public/details.html';
         }
       }
-      req.send();
+      req.send();*/
+      recipe = response[name];
+      sessionStorage.setItem('recipeDetails', JSON.stringify(recipe));
+      window.location = '../public/details.html';
     }, false);
   });
 }
