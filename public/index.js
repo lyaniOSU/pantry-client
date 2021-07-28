@@ -33,7 +33,8 @@ document.getElementById('recipe-random').addEventListener('click', function(even
   event.preventDefault();
   var req = new XMLHttpRequest();
   let number = document.getElementById('recipe-number').value;
-  req.open("GET", "http://127.0.0.1:5000/randomize?number=" + number, true);
+  //req.open("GET", "http://127.0.0.1:5000/randomize?number=" + number, true);
+  req.open("GET", "http://pantry-recipes-server.herokuapp.com/randomize?number=" + number, true);
   req.addEventListener('load', function() {
     if (req.status >= 200 && req.status < 400) {
       var response = JSON.parse(req.responseText);
