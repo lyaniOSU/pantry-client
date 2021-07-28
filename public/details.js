@@ -25,6 +25,7 @@ function addImage(res) {
     var parent = document.getElementById('recipe');
     var imageChild = document.createElement("IMG");
     imageChild.classList.add("recipe-image");
+    imageChild.classList.add("mx-auto");
     imageChild.setAttribute("src", image);
     parent.appendChild(imageChild);
 }
