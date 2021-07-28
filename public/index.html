@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pantry</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
@@ -13,13 +15,14 @@
 <body>
 
     <div class="header-title">
-        <h1>Pantry</h1>
+        <a href="./index.html"><img class="logo" src="./images/pantry.png" alt="Pantry Logo"></a>
     </div>
 
     <div class="search-bar">
         <form method="get">
             <fieldset>
                 <legend>Recipe Search</legend>
+                <div class="callout callout-info">To search, fill in all parameters below. To randomize, only select the number of results to display.</div>
                 <label>Enter a search query:
                     <input type="text" name="recipe-query" id="recipe-query">
                 </label>
@@ -72,12 +75,9 @@
                 <input type="number" id="recipe-number" name="recipe-number" min="1" max="10" value="1">
                 <br>
                 <input type="submit" id="recipe-submit">
+                <input type="submit" id="recipe-random" value="Randomize">
             </fieldset>
         </form>
-    </div>
-
-    <div class="instructions">
-        <h6>Enter your recipe preferences.</h6>
     </div>
 
     <div id="recipe-result">    
@@ -85,7 +85,8 @@
     
     <div id="footer"></div>
 
-    <script src="script.js"></script>
+    <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>
