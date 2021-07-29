@@ -44,17 +44,20 @@ function addIngredients(res) {
     var ingredients = res.extendedIngredients;
     console.log(ingredients);
     var parent = document.getElementById('recipe');
+    var container = document.createElement('div');
+    container.classList.add("recipe-ingredients");
     var header = document.createElement('h5');
     header.innerHTML = "Ingredients";
     var list = document.createElement("li");
     for (i=0; i<ingredients.length; i++) {
         var ingChild = document.createElement('ul');
-        var text = ingredients[i].name + ": " + ingredients[i].amount + ingredients[i].unit;
+        var text = ingredients[i].name + ": " + ingredients[i].amount + " " + ingredients[i].unit;
         ingChild.innerHTML = text;
         list.appendChild(ingChild);
     }
-    parent.appendChild(header);
-    parent.appendChild(list);
+    container.appendChild(header);
+    container.appendChild(list);
+    parent.appendChild(container);
 }
 
 function addEquipment(res) {
@@ -77,16 +80,18 @@ function addEquipment(res) {
 function addWine(res) {
     var wine = res.winePairing.pairedWines;
     console.log(wine);
-    var parent = document.getElementById('recipe');
-    var header = document.createElement("h5");
-    header.innerHTML = "Wine Pairings";
-    var list = document.createElement("li");
-    for (i=0; i < wine.length; i++) {
-        var wineChild = document.createElement('ul');
-        var text = wine[i];
-        wineChild.innerHTML = text;
-        list.appendChild(wineChild);
+    if (wine) {
+        var parent = document.getElementById('recipe');
+        var header = document.createElement("h5");
+        header.innerHTML = "Wine Pairings";
+        var list = document.createElement("li");
+        for (i=0; i < wine.length; i++) {
+            var wineChild = document.createElement('ul');
+            var text = wine[i];
+            wineChild.innerHTML = text;
+            list.appendChild(wineChild);
+        }
+        parent.appendChild(header);
+        parent.appendChild(list);
     }
-    parent.appendChild(header);
-    parent.appendChild(list);
 }

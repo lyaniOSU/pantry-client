@@ -127,6 +127,16 @@ h3.recipe-title {
     /*display: inline-block;*/
 }
 
+.recipe-desc {
+    margin: 5px;
+    padding: 5px;
+}
+
+.recipe-ingredients {
+    margin: 5px;
+    padding: 5px;
+}
+
 .callout {
     padding: 1.25rem;
     margin-top: 1.25rem;
