@@ -75,7 +75,7 @@ function createRecipe(response) {
     var link = document.createElement('a');
     link.classList.add("recipe-link")
     link.innerHTML = title;
-    link.href = "../public/details.html"
+    link.href = "./details.html"
     link.setAttribute("id", id);
     link.setAttribute("name", count);
 
