@@ -104,7 +104,7 @@ function linkListen(response) {
       let name = this.name;
       recipe = response[name];
       sessionStorage.setItem('recipeDetails', JSON.stringify(recipe));
-      window.location = '../public/details.html';
+      window.location = './details.html';
     }, false);
   });
 }
