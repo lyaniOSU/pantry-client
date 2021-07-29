@@ -5,7 +5,7 @@ document.getElementById('recipe-submit').addEventListener('click', function (eve
   let cuisine = document.getElementById('recipe-cuisine').value;
   let diet = document.getElementById('recipe-diet').value;
   let number = document.getElementById('recipe-number').value;
-  req.open("GET", "https://127.0.0.1:5000/search?item=" +item + "&cuisine=" + cuisine + "&diet=" + diet + "&number=" + number, true);
+  req.open("GET", "https://pantry-recipes-server.herokuapp.com/search?item=" +item + "&cuisine=" + cuisine + "&diet=" + diet + "&number=" + number, true);
   req.addEventListener('load', function() {
     if (req.status >= 200 && req.status < 400) {
       var response = JSON.parse(req.responseText);
@@ -34,7 +34,7 @@ document.getElementById('recipe-random').addEventListener('click', function(even
   var req = new XMLHttpRequest();
   let number = document.getElementById('recipe-number').value;
   //req.open("GET", "http://127.0.0.1:5000/randomize?number=" + number, true);
-  req.open("GET", "http://pantry-recipes-server.herokuapp.com/randomize?number=" + number, true);
+  req.open("GET", "https://pantry-recipes-server.herokuapp.com/randomize?number=" + number, true);
   req.addEventListener('load', function() {
     if (req.status >= 200 && req.status < 400) {
       var response = JSON.parse(req.responseText);
