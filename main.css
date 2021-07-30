@@ -132,9 +132,31 @@ h3.recipe-title {
     padding: 5px;
 }
 
+.recipe-facts {
+    margin: 5px;
+    padding: 5px;
+}
+
 .recipe-ingredients {
     margin: 5px;
     padding: 5px;
+}
+
+.recipe-wine {
+    margin: 5px;
+    padding: 5px;
+}
+
+.wine-image {
+    /*max-width: 100%;*/
+    max-height: 100%;
+    height: 10vw;
+    /*margin: auto;*/
+    display: block;
+    /*height: 200px;*/
+    /*object-position: 50% 50%;*/
+    object-fit: cover;
+    /*display: inline-block;*/
 }
 
 .callout {
