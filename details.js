@@ -119,7 +119,7 @@ function wineListener() {
     //event.preventDefault();
     var req = new XMLHttpRequest();
     let item = document.getElementById('ingredient').value;
-    req.open("GET", "http://flip1.engr.oregonstate.edu:41574/pairing/" + item, true);
+    req.open("GET", "http://flip1.engr.oregonstate.edu:41574/pairing/" + item + "/", true);
     req.addEventListener('load', function () {
         if (req.status >= 200 && req.status < 400) {
             var response = JSON.parse(req.responseText);
