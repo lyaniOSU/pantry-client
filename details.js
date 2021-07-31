@@ -156,8 +156,8 @@ function wineListener() {
                 wineDiv.appendChild(image);
             }
         });
-        req.send(null);
-        event.preventDefault();*/
+        req.send(null);*/
+        event.preventDefault();
     });
 };
 
