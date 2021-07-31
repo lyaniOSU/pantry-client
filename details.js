@@ -82,7 +82,7 @@ function addFacts(res) {
     parent.appendChild(container);
 }
 
-function addWineSelection () {
+function addWineSelection() {
     var parent = document.getElementById('recipe');
     var container = document.createElement('div');
     var header = document.createElement("h5");
@@ -94,7 +94,7 @@ function addWineSelection () {
     wineForm.setAttribute("id", "wine-submit");
     var selector = document.createElement('select');
     selector.setAttribute("id", "ingredient");
-    for (i=0; i < options.length; i++) {
+    for (i = 0; i < options.length; i++) {
         var opt = options[i];
         var el = document.createElement("option");
         //el.setAttribute("id", "ingredient");
@@ -116,36 +116,49 @@ function addWineSelection () {
 
 function wineListener() {
     document.getElementById("wineSubmit").addEventListener('click', function (event) {
-    //event.preventDefault();
-    var req = new XMLHttpRequest();
-    let item = document.getElementById('ingredient').value;
-    req.open("GET", "http://flip1.engr.oregonstate.edu:41574/pairing/" + item + "/", true);
-    req.addEventListener('load', function () {
-        if (req.status >= 200 && req.status < 400) {
-            var response = JSON.parse(req.responseText);
-            console.log(req);
-            console.log(response);
-            var res = response.results;
-            var res = JSON.parse(res);
-            console.log(res);
-            var wineDiv = document.getElementById("recipe-wine");
-            while (wineDiv.lastChild.id !== 'wine-submit'){
-                wineDiv.removeChild(wineDiv.lastChild);
-            }
-            var wineName = res[0].wineName;
-            var wineImage = res[0].wineImage;
-            var header = document.createElement("h6");
-            header.innerHTML = wineName;
-            var image = document.createElement("IMG");
-            image.classList.add("wine-image");
-            image.setAttribute("src", wineImage);
-            wineDiv.appendChild(header);
-            wineDiv.appendChild(image);
+        //event.preventDefault();
+        var req = new XMLHttpRequest();
+        let item = document.getElementById('ingredient').value;
+        var wineDiv = document.getElementById("recipe-wine");
+        while (wineDiv.lastChild.id !== 'wine-submit') {
+            wineDiv.removeChild(wineDiv.lastChild);
         }
+        var wineName = "Pinot Noir";
+        var wineImage = "https://www.totalwine.com/dynamic/x490,sq/media/sys_master/twmmedia/he5/h5c/12336190586910.png";
+        var header = document.createElement("h6");
+        header.innerHTML = wineName;
+        var image = document.createElement("IMG");
+        image.classList.add("wine-image");
+        image.setAttribute("src", wineImage);
+        wineDiv.appendChild(header);
+        wineDiv.appendChild(image);
+        /*req.open("GET", "http://flip1.engr.oregonstate.edu:41574/pairing/" + item + "/", true);
+        req.addEventListener('load', function () {
+            if (req.status >= 200 && req.status < 400) {
+                var response = JSON.parse(req.responseText);
+                console.log(req);
+                console.log(response);
+                var res = response.results;
+                var res = JSON.parse(res);
+                console.log(res);
+                var wineDiv = document.getElementById("recipe-wine");
+                while (wineDiv.lastChild.id !== 'wine-submit'){
+                    wineDiv.removeChild(wineDiv.lastChild);
+                }
+                var wineName = res[0].wineName;
+                var wineImage = res[0].wineImage;
+                var header = document.createElement("h6");
+                header.innerHTML = wineName;
+                var image = document.createElement("IMG");
+                image.classList.add("wine-image");
+                image.setAttribute("src", wineImage);
+                wineDiv.appendChild(header);
+                wineDiv.appendChild(image);
+            }
+        });
+        req.send(null);
+        event.preventDefault();*/
     });
-    req.send(null);
-    event.preventDefault();
-})
 };
 
 
