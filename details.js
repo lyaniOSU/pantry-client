@@ -123,7 +123,7 @@ function wineListener() {
         while (wineDiv.lastChild.id !== 'wine-submit') {
             wineDiv.removeChild(wineDiv.lastChild);
         }
-        var wineName = "Pinot Noir";
+        /*var wineName = "Pinot Noir";
         var wineImage = "https://www.totalwine.com/dynamic/x490,sq/media/sys_master/twmmedia/he5/h5c/12336190586910.png";
         var header = document.createElement("h6");
         header.innerHTML = wineName;
@@ -131,8 +131,8 @@ function wineListener() {
         image.classList.add("wine-image");
         image.setAttribute("src", wineImage);
         wineDiv.appendChild(header);
-        wineDiv.appendChild(image);
-        /*req.open("GET", "http://flip1.engr.oregonstate.edu:41574/pairing/" + item + "/", true);
+        wineDiv.appendChild(image);*/
+        req.open("GET", "http://flip1.engr.oregonstate.edu:41574/pairing/" + item + "/", true);
         req.addEventListener('load', function () {
             if (req.status >= 200 && req.status < 400) {
                 var response = JSON.parse(req.responseText);
@@ -156,7 +156,7 @@ function wineListener() {
                 wineDiv.appendChild(image);
             }
         });
-        req.send(null);*/
+        req.send(null);
         event.preventDefault();
     });
 };
