@@ -8,14 +8,17 @@ window.addEventListener('load', (event) => {
     addFacts(results);
     addIngredients(results);
     addWineSelection();
-    //addEquipment(results);
-    //addWine(results);
 });
+
+function getParent(id) {
+    var parent = document.getElementById(id);
+    return parent;
+}
 
 function addTitle(res) {
     var title = res.title;
     console.log(title);
-    var parent = document.getElementById('recipe');
+    var parent = getParent('recipe');
     var titleChild = document.createElement('h3');
     titleChild.classList.add("recipe-title");
     titleChild.innerHTML = title;
@@ -24,7 +27,7 @@ function addTitle(res) {
 
 function addImage(res) {
     var image = res.image;
-    var parent = document.getElementById('recipe');
+    var parent = getParent('recipe');
     var imageChild = document.createElement("IMG");
     imageChild.classList.add("recipe-image");
     imageChild.classList.add("mx-auto");
@@ -35,7 +38,7 @@ function addImage(res) {
 function addDescription(res) {
     var desc = res.summary;
     console.log(desc);
-    var parent = document.getElementById('recipe');
+    var parent = getParent('recipe');
     var descChild = document.createElement("p");
     descChild.classList.add("recipe-desc");
     descChild.innerHTML = desc;
@@ -44,8 +47,7 @@ function addDescription(res) {
 
 function addIngredients(res) {
     var ingredients = res.extendedIngredients;
-    console.log(ingredients);
-    var parent = document.getElementById('recipe');
+    var parent = getParent('recipe');
     var container = document.createElement('div');
     container.classList.add("recipe-ingredients");
     var header = document.createElement('h5');
@@ -63,7 +65,7 @@ function addIngredients(res) {
 }
 
 function addFacts(res) {
-    var parent = document.getElementById('recipe');
+    var parent = getParent('recipe');
     var container = document.createElement("div");
     container.classList.add("recipe-facts");
     var header = document.createElement('h5');
@@ -83,7 +85,7 @@ function addFacts(res) {
 }
 
 function addWineSelection() {
-    var parent = document.getElementById('recipe');
+    var parent = getParent('recipe');
     var container = document.createElement('div');
     var header = document.createElement("h5");
     header.innerHTML = "Wine Pairing";
@@ -97,7 +99,6 @@ function addWineSelection() {
     for (i = 0; i < options.length; i++) {
         var opt = options[i];
         var el = document.createElement("option");
-        //el.setAttribute("id", "ingredient");
         el.textContent = opt;
         el.value = opt;
         selector.appendChild(el);
@@ -116,31 +117,18 @@ function addWineSelection() {
 
 function wineListener() {
     document.getElementById("wineSubmit").addEventListener('click', function (event) {
-        //event.preventDefault();
+        event.preventDefault();
         var req = new XMLHttpRequest();
         let item = document.getElementById('ingredient').value;
-        var wineDiv = document.getElementById("recipe-wine");
+        var wineDiv = getParent("recipe-wine");
         while (wineDiv.lastChild.id !== 'wine-submit') {
             wineDiv.removeChild(wineDiv.lastChild);
         }
-        /*var wineName = "Pinot Noir";
-        var wineImage = "https://www.totalwine.com/dynamic/x490,sq/media/sys_master/twmmedia/he5/h5c/12336190586910.png";
-        var header = document.createElement("h6");
-        header.innerHTML = wineName;
-        var image = document.createElement("IMG");
-        image.classList.add("wine-image");
-        image.setAttribute("src", wineImage);
-        wineDiv.appendChild(header);
-        wineDiv.appendChild(image);*/
         req.open("GET", "http://flip1.engr.oregonstate.edu:41574/pairing/" + item + "/", true);
         req.addEventListener('load', function () {
             if (req.status >= 200 && req.status < 400) {
                 var response = JSON.parse(req.responseText);
-                console.log(req);
-                console.log(response);
-                var res = response.results;
-                var res = JSON.parse(res);
-                console.log(res);
+                var res = JSON.parse(response.results);
                 var wineDiv = document.getElementById("recipe-wine");
                 while (wineDiv.lastChild.id !== 'wine-submit'){
                     wineDiv.removeChild(wineDiv.lastChild);
@@ -160,40 +148,3 @@ function wineListener() {
         event.preventDefault();
     });
 };
-
-
-/*function addEquipment(res) {
-    var equipment = res.analyzedInstructions.equipment;
-    console.log(equipment);
-    var parent = document.getElementById('recipe');
-    var header = document.createElement('h5');
-    header.innerHTML = "Equipment";
-    var list = document.createElement("li");
-    for (i=0; i<equipment.length; i++) {
-        var eqpChild = document.createElement('ul');
-        var text = equipment[i].name;
-        eqpChild.innerHTML = text;
-        list.appendChild(eqpChild);
-    }
-    parent.appendChild(header);
-    parent.appendChild(list);
-}*/
-
-/*function addWine(res) {
-    var wine = res.winePairing.pairedWines;
-    console.log(wine);
-    if (wine) {
-        var parent = document.getElementById('recipe');
-        var header = document.createElement("h5");
-        header.innerHTML = "Wine Pairings";
-        var list = document.createElement("li");
-        for (i=0; i < wine.length; i++) {
-            var wineChild = document.createElement('ul');
-            var text = wine[i];
-            wineChild.innerHTML = text;
-            list.appendChild(wineChild);
-        }
-        parent.appendChild(header);
-        parent.appendChild(list);
-    }
-}*/
