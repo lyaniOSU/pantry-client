@@ -69,10 +69,13 @@ function recipeLink(response, count, title) {
 
 //Add recipe image to page
 function recipeImage(response, count) {
+  var id = response[count].id;
   var image = response[count].image;
   var img = document.createElement("IMG");
   img.classList.add("recipe-image");
   img.setAttribute("src", image);
+  img.setAttribute("id", id);
+  img.href = "./details.html";
   return img;
 }
 
