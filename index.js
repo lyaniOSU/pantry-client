@@ -70,13 +70,20 @@ function recipeLink(response, count, title) {
 //Add recipe image to page
 function recipeImage(response, count) {
   var id = response[count].id;
+
+  var link = document.createElement('a');
+  link.classList.add("recipe-image")
+  link.href = "./details.html"
+  link.setAttribute("id", id);
+
   var image = response[count].image;
   var img = document.createElement("IMG");
   img.classList.add("recipe-image");
   img.setAttribute("src", image);
   img.setAttribute("id", id);
-  img.href = "./details.html";
-  return img;
+
+  link.appendChild(img);
+  return link;
 }
 
 //Create container for each recipe
