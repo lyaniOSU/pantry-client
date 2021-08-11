@@ -1,6 +1,5 @@
 window.addEventListener('load', (event) => {
     var res = sessionStorage.getItem('recipeDetails');
-    console.log(res);
     var results = JSON.parse(res);
     addTitle(results);
     addImage(results);
@@ -10,14 +9,15 @@ window.addEventListener('load', (event) => {
     addWineSelection();
 });
 
+//Retrieve the parent of the provided id
 function getParent(id) {
     var parent = document.getElementById(id);
     return parent;
 }
 
+//Add the recipe title to top of the page
 function addTitle(res) {
     var title = res.title;
-    console.log(title);
     var parent = getParent('recipe');
     var titleChild = document.createElement('h3');
     titleChild.classList.add("recipe-title");
@@ -25,6 +25,7 @@ function addTitle(res) {
     parent.appendChild(titleChild);
 }
 
+//Add recipe image to the page
 function addImage(res) {
     var image = res.image;
     var parent = getParent('recipe');
@@ -35,9 +36,9 @@ function addImage(res) {
     parent.appendChild(imageChild);
 }
 
+//Add recipe description to the page
 function addDescription(res) {
     var desc = res.summary;
-    console.log(desc);
     var parent = getParent('recipe');
     var descChild = document.createElement("p");
     descChild.classList.add("recipe-desc");
@@ -45,6 +46,7 @@ function addDescription(res) {
     parent.appendChild(descChild);
 }
 
+//Add list of ingredients to page
 function addIngredients(res) {
     var ingredients = res.extendedIngredients;
     var parent = getParent('recipe');
@@ -64,6 +66,7 @@ function addIngredients(res) {
     parent.appendChild(container);
 }
 
+//Add list of facts to page
 function addFacts(res) {
     var parent = getParent('recipe');
     var container = document.createElement("div");
@@ -84,6 +87,7 @@ function addFacts(res) {
     parent.appendChild(container);
 }
 
+//Add wine selection form to page
 function addWineSelection() {
     var parent = getParent('recipe');
     var container = document.createElement('div');
@@ -115,12 +119,14 @@ function addWineSelection() {
     wineListener();
 }
 
+//Call GET request to wine pairing microservice
 function wineListener() {
     document.getElementById("wineSubmit").addEventListener('click', function (event) {
         event.preventDefault();
         var req = new XMLHttpRequest();
         let item = document.getElementById('ingredient').value;
         var wineDiv = getParent("recipe-wine");
+        //Remove existing wine render from previous selection
         while (wineDiv.lastChild.id !== 'wine-submit') {
             wineDiv.removeChild(wineDiv.lastChild);
         }
@@ -130,9 +136,10 @@ function wineListener() {
                 var response = JSON.parse(req.responseText);
                 var res = JSON.parse(response.results);
                 var wineDiv = document.getElementById("recipe-wine");
+                //Remove existing wine render from previous selection
                 while (wineDiv.lastChild.id !== 'wine-submit'){
                     wineDiv.removeChild(wineDiv.lastChild);
-                }
+                } 
                 var wineName = res[0].wineName;
                 var wineImage = res[0].wineImage;
                 var header = document.createElement("h6");
@@ -140,6 +147,7 @@ function wineListener() {
                 var image = document.createElement("IMG");
                 image.classList.add("wine-image");
                 image.setAttribute("src", wineImage);
+                //Add wine name and image to page
                 wineDiv.appendChild(header);
                 wineDiv.appendChild(image);
             }
