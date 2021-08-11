@@ -115,7 +115,7 @@ function createRecipe(response) {
 
 //Add event listener to redirect to details page
 function linkListen(response) {
-  links = document.querySelectorAll('.recipe-link');
+  links = document.querySelectorAll('.recipe-link, .recipe-image');
   console.log(links);
   links.forEach((link) => {
     link.addEventListener('click', function (event) {
