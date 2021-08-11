@@ -75,12 +75,12 @@ function recipeImage(response, count) {
   link.classList.add("recipe-image")
   link.href = "./details.html"
   link.setAttribute("id", id);
+  link.setAttribute("name", count);
 
   var image = response[count].image;
   var img = document.createElement("IMG");
   img.classList.add("recipe-image");
   img.setAttribute("src", image);
-  img.setAttribute("id", id);
 
   link.appendChild(img);
   return link;
