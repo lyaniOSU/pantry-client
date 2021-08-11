@@ -53,7 +53,7 @@ function recipeTitle(response, count) {
   var name = document.createElement("h3")
   name.classList.add("recipe-title");
   name.innerHTML = title;
-  return name;
+  return title;
 }
 
 function createRecipe(response) {
@@ -64,7 +64,7 @@ function createRecipe(response) {
   for (let count = 0; count < response.length; count++) {
 
     var container = recipeContainer(response, count);
-    var name = recipeTitle(response, count);
+    var title = recipeTitle(response, count);
 
     var link = document.createElement('a');
     link.classList.add("recipe-link")
