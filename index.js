@@ -40,13 +40,6 @@ document.getElementById('recipe-random').addEventListener('click', function (eve
   req.send(null);
 });
 
-
-function recipeContainer(response, count) {
-  var container = document.createElement("div");
-  container.classList.add("recipe-container");
-  return container;
-}
-
 function recipeTitle(response, count) {
   var title = response[count].title;
   var name = document.createElement("h3")
@@ -55,33 +48,44 @@ function recipeTitle(response, count) {
   return title;
 }
 
+function recipeLink(response, count, title) {
+  var id = response[count].id;
+  var link = document.createElement('a');
+  link.classList.add("recipe-link")
+  link.innerHTML = title;
+  link.href = "./details.html"
+  link.setAttribute("id", id);
+  link.setAttribute("name", count);
+}
+
+function recipeImage(response, count) {
+  var image = response[count].image;
+  var img = document.createElement("IMG");
+  img.classList.add("recipe-image");
+  img.setAttribute("src", image);
+}
+
+function recipeContainer(response, count, link, img) {
+  var container = document.createElement("div");
+  container.classList.add("recipe-container");
+  var breaker = document.createElement("br");
+  container.append(link);
+  container.append(breaker);
+  container.append(img);
+  return container;
+}
+
 function createRecipe(response) {
   var results = document.getElementById('recipe-result');
   while (results.firstChild) {
     results.removeChild(results.firstChild);
   }
   for (let count = 0; count < response.length; count++) {
-    var id = response[count].id;
-    var container = recipeContainer(response, count);
     var title = recipeTitle(response, count);
+    var link = recipeLink(response, count, title);
+    var img = recipeImage(response, count);
+    var container = recipeContainer(response, count, link, img);
 
-    var link = document.createElement('a');
-    link.classList.add("recipe-link")
-    link.innerHTML = title;
-    link.href = "./details.html"
-    link.setAttribute("id", id);
-    link.setAttribute("name", count);
-
-    var image = response[count].image;
-    var img = document.createElement("IMG");
-    img.classList.add("recipe-image");
-    img.setAttribute("src", image);
-
-    var breaker = document.createElement("br");
-
-    container.append(link);
-    container.append(breaker);
-    container.append(img);
     results.append(container);
   }
 }
