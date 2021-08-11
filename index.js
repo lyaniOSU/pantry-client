@@ -44,7 +44,6 @@ document.getElementById('recipe-random').addEventListener('click', function (eve
 function recipeContainer(response, count) {
   var container = document.createElement("div");
   container.classList.add("recipe-container");
-  var id = response[count].id;
   return container;
 }
 
@@ -62,7 +61,7 @@ function createRecipe(response) {
     results.removeChild(results.firstChild);
   }
   for (let count = 0; count < response.length; count++) {
-
+    var id = response[count].id;
     var container = recipeContainer(response, count);
     var title = recipeTitle(response, count);
 
